@@ -29,7 +29,7 @@ const Navbar = () => {
                 <nav className="w-fit flex gap-7.5 items-center">
                    {navItems.map(({label,href}) => {
                     const isActive = pathname === href ||
-                        (href !== '/' && pathname.startsWith(href));
+                        (href !== '/' && pathname.startsWith(`${href}/`));
 
                         return (
                             <Link  href = {href} key={label} 

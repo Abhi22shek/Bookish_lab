@@ -30,10 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${ibmPlexSerif.variable} ${monaSans.variable} antialiased`}
-          cz-shortcut-listen="true"
+          suppressHydrationWarning
         >
           <Navbar />
           {children}
