@@ -96,6 +96,7 @@ const UploadForm = () => {
             if (existsCheck.exists && existsCheck.data) {
                 toast.info("Book already exists")
                 form.reset()
+                setIsSubmitting(false)
                 router.push(`/books/${existsCheck.data.slug}`)
                 return;
             }
@@ -107,6 +108,7 @@ const UploadForm = () => {
 
             if (parsedPdf.content.length === 0) {
                 toast.error("Failed to parse PDF, Please try again with a different file")
+                setIsSubmitting(false)
                 return;
             }
 
@@ -149,6 +151,14 @@ const UploadForm = () => {
             })
 
             if (!book.success) throw new Error("Failed to create book")
+            
+            if (book.alreadyExists) {
+                toast.info("Book already exists")
+                form.reset()
+                setIsSubmitting(false)
+                router.push(`/books/${book.data.slug}`)
+                return;
+            }
 
             const segments = await saveBookSegments(book.data._id, parsedPdf.content, userId);
 

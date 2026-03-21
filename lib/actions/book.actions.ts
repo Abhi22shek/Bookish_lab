@@ -4,7 +4,6 @@ import { connectToDatabase } from "@/database/mongoose";
 import { CreateBook, TextSegment } from "@/types";
 import { generateSlug, serializeData } from "../utils";
 import Book from "@/database/models/book.model";
-import { success } from "zod";
 import BookSegment from "@/database/models/bookSegment.model";
 
 
